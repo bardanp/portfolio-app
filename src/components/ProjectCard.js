@@ -64,14 +64,6 @@ const ProjectCard = ({ title, description, imageUrls, link, github, techStack, w
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Image
-          src={imageUrls[currentImageIndex]}
-          alt={`Image of ${title}`}
-          w="100%"
-          borderTopRadius="lg"
-          cursor="pointer"
-          onClick={onOpen}
-        />
         <VStack p="4" spacing="2" align="left">
           <Heading size="sm" color={titleColor}>{title}</Heading>
           <Text fontSize="xs" color={textColor}>
@@ -99,6 +91,16 @@ const ProjectCard = ({ title, description, imageUrls, link, github, techStack, w
               GitHub
             </Button>
           </ButtonGroup>
+          <Divider />
+          <Image
+          src={imageUrls[currentImageIndex]}
+          alt={`Image of ${title}`}
+          w="100%"
+          borderTopRadius="lg"
+          cursor="pointer"
+          onClick={onOpen}
+        />
+        
         </Box>
       </Box>
 
