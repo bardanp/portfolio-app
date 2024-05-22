@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {
   Box,
+  Button,
   Heading,
   Text,
   VStack,
@@ -9,13 +10,16 @@ import {
   useColorModeValue,
   Divider,
   Container,
+  HStack,
+  Link,
 } from '@chakra-ui/react';
-import { FaLaptopCode, FaUser, FaBriefcase } from 'react-icons/fa';
+import { FaLaptopCode, FaUser, FaBriefcase, FaDownload, FaEye } from 'react-icons/fa';
 import { Element } from 'react-scroll';
 import ProjectCard from '../components/ProjectCard';
 import Connect from '../pages/Connect';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+const resumeURL = './Resume.pdf';
 
 const projects = [
   {
@@ -80,9 +84,35 @@ const About = () => {
       <Container maxW="7xl" p={5}>
         <Element name="about">
           <Box p={5} borderRadius="md" shadow="md" mb={10}>
-            <Heading as="h1" size="2xl" mb={5} textAlign="center" data-aos="fade-up">
+            <Heading as="h1" size="2xl" mb={8} textAlign="center" data-aos="fade-up">
               About Me
             </Heading>
+            <Box textAlign="center" mb={10}>
+              <HStack justify="center" spacing={8} mb={10}>
+                <Link href={resumeURL} download="Resume.pdf">
+                  <Button
+                    leftIcon={<Icon as={FaDownload} />}
+                    colorScheme="gray"
+                    _hover={{ bg: 'blue.300' }} 
+                    _active={{ bg: 'blue.700' }} 
+                  >
+                    Download Resume
+                  </Button>
+                </Link>
+
+                <Link href={resumeURL} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    leftIcon={<Icon as={FaEye} />}
+                    colorScheme="gray"
+                    variant="ghost"
+                    _hover={{ bg: 'gray.200' }} 
+                    _active={{ bg: 'gray.700' }} 
+                  >
+                    View Resume
+                  </Button>
+                </Link>
+              </HStack>
+            </Box>
             <VStack align="start" spacing={10}>
               <Box w="100%" data-aos="fade-right">
                 <Heading as="h2" size="lg" mb={2} display="flex" alignItems="center">
