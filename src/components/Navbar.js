@@ -3,12 +3,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { Link as ScrollLink } from 'react-scroll';
-import { Box, Button, HStack, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, HStack, useColorMode, useColorModeValue, Image } from '@chakra-ui/react';
 
 const Navbar = ({ toggleTheme, theme }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navbarBg = useColorModeValue('gray.100', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
+  const logo = useColorModeValue('/logoLight.png', '/logoDark.png'); 
 
   return (
     <Box
@@ -23,9 +24,7 @@ const Navbar = ({ toggleTheme, theme }) => {
     >
       <HStack justify="space-between" align="center">
         <RouterLink to="/">
-          <Button variant="link" color={textColor} fontSize="lg">
-            Bardan's Portfolio
-          </Button>
+          <Image src={logo} alt="Bardan's Portfolio Logo" height="40px" />
         </RouterLink>
         <HStack spacing={4}>
           <ScrollLink to="about" smooth={true} duration={500}>
