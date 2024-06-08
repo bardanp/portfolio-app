@@ -9,7 +9,7 @@ const Navbar = ({ toggleTheme, theme }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navbarBg = useColorModeValue('gray.100', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
-  const logo = useColorModeValue('/logoLight.png', '/logoDark.png'); 
+  const logo = useColorModeValue('/LogoLight.png', '/LogoDark.png'); 
 
   return (
     <Box
