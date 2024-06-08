@@ -23,6 +23,19 @@ const resumeURL = './Resume.pdf';
 
 const projects = [
   {
+    title: 'AmazonScout API',
+    description: 'Developed a robust API that fetches product details, reviews, offers, and search results from Amazon using the ScraperAPI. Deployed on Vercel for seamless accessibility.',
+    imageUrls: [
+      '/projectImg/amazonScout1.png',
+      '/projectImg/amazonScout2.png',
+    ],
+    link: 'https://amazonscout.bardanp.com',
+    github: 'https://github.com/bardanp/AmazonScout',
+    techStack: 'Node.js, Express.js, request-promise',
+    whatILearned: 'API development and deployment with Vercel.',
+    projectInfo: 'Fetches comprehensive Amazon product data using ScraperAPI.'
+  },
+  {
     title: 'Nittany Navigator',
     description: 'A campus navigation app developed for Pennsylvania State University students and faculty, allowing them to create events and reports.',
     imageUrls: [
@@ -71,9 +84,6 @@ const projects = [
 const About = () => {
   const bgColor = useColorModeValue('white', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'gray.200');
-  const cardBgColor = useColorModeValue('gray.100', 'gray.700');
-  const cardTextColor = useColorModeValue('gray.800', 'gray.200');
-  const cardBorderColor = useColorModeValue('gray.300', 'gray.600');
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -150,19 +160,19 @@ const About = () => {
                   <Icon as={FaBriefcase} mr={2} /> Relevant Experience
                 </Heading>
                 <Divider mb={4} />
-                <Box bg={cardBgColor} p={4} borderRadius="md" shadow="sm" borderWidth="1px" borderColor={cardBorderColor}>
+                <Box bg={useColorModeValue('gray.100', 'gray.700')} p={4} borderRadius="md" shadow="sm" borderWidth="1px" borderColor={useColorModeValue('gray.300', 'gray.600')}>
                   <Heading as="h3" size="md" mb={2}>Software Engineer Intern</Heading>
                   <Text fontSize="sm" color="gray.500">SupplyTiger, Elizabethtown, PA (May 2023 - Jul 2023)</Text>
-                  <Text mt={2} color={cardTextColor}>
+                  <Text mt={2} color={useColorModeValue('gray.800', 'gray.200')}>
                     Led SupplyTiger's digital transformation by introducing AI and machine learning to improve efficiency.
                     Developed full-stack solutions using HTML5, Python, JavaScript, and CSS3. Integrated RESTful APIs for automated tasks like Amazon listing creation.
                     Applied data-driven marketing techniques to enhance conversion rates and customer acquisition. Developed unique product offerings such as a custom candy mix and Garden Grace Seeds.
                   </Text>
                 </Box>
-                <Box bg={cardBgColor} p={4} borderRadius="md" shadow="sm" borderWidth="1px" borderColor={cardBorderColor}>
+                <Box bg={useColorModeValue('gray.100', 'gray.700')} p={4} borderRadius="md" shadow="sm" borderWidth="1px" borderColor={useColorModeValue('gray.300', 'gray.600')}>
                   <Heading as="h3" size="md" mb={2}>Retail Sales Consultant</Heading>
                   <Text fontSize="sm" color="gray.500">Xfinity, Hummelstown, PA (March 2022 - April 2023)</Text>
-                  <Text mt={2} color={cardTextColor}>
+                  <Text mt={2} color={useColorModeValue('gray.800', 'gray.200')}>
                     Demonstrated exceptional expertise in assisting consumers in selecting optimal Xfinity services and bundles tailored to their unique requirements and preferences, showcasing excellent interpersonal and communication skills.
                     Proficiently explained complex technical concepts in a clear and accessible manner to clients with varying levels of technological proficiency, fostering a comfortable and engaging sales experience.
                     Successfully surpassed full-time sales goals and consistently achieved and exceeded full-time targets despite working part-time while actively pursuing academic endeavors.
