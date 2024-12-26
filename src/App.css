@@ -5,8 +5,8 @@ body.light {
 }
 
 body.dark {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #1A202C;
+  color: #E2E8F0;
 }
 
 /* Navbar Styles */
@@ -15,7 +15,7 @@ body.dark {
 }
 
 .navbar-dark .navbar-brand, .navbar-dark .nav-link {
-  color: #e0e0e0;
+  color: #E2E8F0;
 }
 
 .navbar-light {

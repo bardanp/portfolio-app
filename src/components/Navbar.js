@@ -5,7 +5,7 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { Link as ScrollLink } from 'react-scroll';
 import { Box, Button, HStack, useColorMode, useColorModeValue, Image } from '@chakra-ui/react';
 
-const Navbar = ({ toggleTheme, theme }) => {
+const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navbarBg = useColorModeValue('gray.100', 'gray.900');
   const textColor = useColorModeValue('gray.800', 'white');
@@ -36,7 +36,8 @@ const Navbar = ({ toggleTheme, theme }) => {
           <ScrollLink to="connect" smooth={true} duration={500}>
             <Button variant="link" color={textColor}>Contact</Button>
           </ScrollLink>
-          <Button onClick={toggleColorMode} variant="link" color={textColor}>
+          <Button onClick={toggleColorMode} variant="link" color={textColor} 
+            style={{ transition: 'transform 0.3s', transform: colorMode === 'light' ? 'rotate(0deg)' : 'rotate(180deg)' }}>
             <FontAwesomeIcon icon={colorMode === 'light' ? faMoon : faSun} />
           </Button>
         </HStack>

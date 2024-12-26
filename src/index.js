@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { ThemeProvider } from './context/ThemeContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
 import './App.css';
@@ -15,17 +14,17 @@ const theme = extendTheme({
     useSystemColorMode: false,
   },
   colors: {
-    primary: '#007bff',
-    accent: '#6c5ce7',
-    background: '#222',
-    text: '#fff',
-  },
-  components: {
-    Box: {
-      baseStyle: {
-        bg: 'background',
-        color: 'text',
-      },
+    primary: {
+      100: '#E2E8F0', // Light mode
+      900: '#1A202C', // Dark mode
+    },
+    background: {
+      light: '#FFFFFF',
+      dark: '#1A202C',
+    },
+    text: {
+      light: '#333333',
+      dark: '#E2E8F0',
     },
   },
 });
@@ -34,11 +33,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </ThemeProvider>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

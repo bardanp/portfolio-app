@@ -19,21 +19,25 @@ import ProjectCard from '../components/ProjectCard';
 import Connect from '../pages/Connect';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
 const resumeURL = './Resume.pdf';
 
 const projects = [
   {
-    title: 'AmazonScout API',
-    description: 'Developed a robust API that fetches product details, reviews, offers, and search results from Amazon using the ScraperAPI. Deployed on Vercel for seamless accessibility.',
+    title: 'Clarify Task Management App',
+    description: 'Developed a productivity-focused task management app, Clarify, using React Native for mobile platforms to help users organize tasks effectively.',
     imageUrls: [
-      '/projectImg/amazonScout1.png',
-      '/projectImg/amazonScout2.png',
+      'https://clarify.bardanp.com/images/img1.jpeg',
+      'https://clarify.bardanp.com/images/img2.jpeg',
+      'https://clarify.bardanp.com/images/img3.jpeg',
+      'https://clarify.bardanp.com/images/img4.jpeg',
+      'https://clarify.bardanp.com/images/img5.jpeg',
     ],
-    link: 'https://amazonscout.bardanp.com',
-    github: 'https://github.com/bardanp/AmazonScout',
-    techStack: 'Node.js, Express.js, request-promise',
-    whatILearned: 'API development and deployment with Vercel.',
-    projectInfo: 'Fetches comprehensive Amazon product data using ScraperAPI.'
+    link: 'https://clarify.bardanp.com',
+    github: 'https://github.com/bardanp/Clarify',
+    techStack: 'React Native, Firebase, Firestore',
+    whatILearned: 'Real-time data synchronization and mobile app development.',
+    projectInfo: 'Task management with custom themes and notifications.'
   },
   {
     title: 'Nittany Navigator',
@@ -53,8 +57,21 @@ const projects = [
     projectInfo: 'Campus navigation with event tracking and safety features.'
   },
   {
+    title: 'AmazonScout API',
+    description: 'Developed a robust API that fetches product details, reviews, offers, and search results from Amazon using the ScraperAPI. Deployed on Vercel for seamless accessibility.',
+    imageUrls: [
+      '/projectImg/amazonScout1.png',
+      '/projectImg/amazonScout2.png',
+    ],
+    link: 'https://amazonscout.bardanp.com',
+    github: 'https://github.com/bardanp/AmazonScout',
+    techStack: 'Node.js, Express.js, request-promise',
+    whatILearned: 'API development and deployment with Vercel.',
+    projectInfo: 'Fetches comprehensive Amazon product data using ScraperAPI.'
+  },
+  {
     title: 'Movie Search App',
-    description: 'An interactive web app for movie searches, providing users with the ability to search for movies by title. The application utilizes the OMDB API to fetch movie data in real-time. Users can view detailed information about each movie, including the title, release year, genre, director, and plot summary. The app also includes a feature to save favorite movies for quick access later.',
+    description: 'An interactive web app for movie searches, providing users with the ability to search for movies by title. The application utilizes the OMDB API to fetch movie data in real-time.',
     imageUrls: [
       '/projectImg/movieSearchApp1.png',
       '/projectImg/movieSearchApp2.png',
@@ -67,7 +84,7 @@ const projects = [
   },
   {
     title: 'Notes Web App',
-    description: 'A comprehensive note-taking platform developed as a project for the 487W Software Engineering course. The application allows users to manage notes with features like adding, editing, and deleting notes. Each note can also have an associated image. The app includes a search bar to quickly find notes by title, content, or ID, and offers sorting options by name or ID.',
+    description: 'A comprehensive note-taking platform developed as a project for the 487W Software Engineering course. The application allows users to manage notes with features like adding, editing, and deleting notes.',
     imageUrls: [
       '/projectImg/notesWebApp1.png',
       '/projectImg/notesWebApp2.png',
@@ -109,7 +126,6 @@ const About = () => {
                     Download Resume
                   </Button>
                 </Link>
-
                 <Link href={resumeURL} target="_blank" rel="noopener noreferrer">
                   <Button
                     leftIcon={<Icon as={FaEye} />}
@@ -154,7 +170,6 @@ const About = () => {
                   </Text>
                 </SimpleGrid>
               </Box>
-
               <Box w="100%" data-aos="fade-left">
                 <Heading as="h2" size="lg" mb={2} display="flex" alignItems="center">
                   <Icon as={FaBriefcase} mr={2} /> Relevant Experience
@@ -191,7 +206,7 @@ const About = () => {
               Projects
             </Heading>
             <Divider mb={4} />
-            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
               {projects.map((project, index) => (
                 <ProjectCard key={index} {...project} />
               ))}

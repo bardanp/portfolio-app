@@ -15,13 +15,16 @@ import {
   Image,
   SimpleGrid,
   VStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 const ProjectCard = ({ title, description, link, github, techStack, whatILearned, projectInfo, imageUrls }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const cardBg = useColorModeValue('white', 'gray.800');
+  const textColor = useColorModeValue('gray.800', 'gray.200');
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={5} shadow="md" bg="white" color="gray.800">
+    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={5} shadow="md" bg={cardBg} color={textColor}>
       <Heading size="md" mb={2}>{title}</Heading>
       <Text mb={4}>{description}</Text>
       <VStack align="start" spacing={2} mb={4}>
