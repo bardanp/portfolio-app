@@ -13,18 +13,23 @@ const theme = extendTheme({
     initialColorMode: 'light',
     useSystemColorMode: false,
   },
-  colors: {
-    primary: {
-      100: '#E2E8F0', // Light mode
-      900: '#1A202C', // Dark mode
-    },
-    background: {
-      light: '#FFFFFF',
-      dark: '#1A202C',
-    },
-    text: {
-      light: '#333333',
-      dark: '#E2E8F0',
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: props.colorMode === 'light' 
+          ? 'linear-gradient(to bottom right, white, gray.50)' 
+          : 'linear-gradient(to bottom right, gray.900, gray.800)',
+      },
+    }),
+  },
+  components: {
+    Button: {
+      baseStyle: {
+        _hover: {
+          transform: 'translateY(-2px)',
+          transition: 'all 0.2s',
+        },
+      },
     },
   },
 });

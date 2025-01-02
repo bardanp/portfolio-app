@@ -19,7 +19,16 @@ const Connect = () => {
 
   return (
     <div name="connect">
-      <Box w="100%" p={5} borderRadius="md" shadow="md" bg={bgColor} color={textColor} data-aos="fade-up">
+      <Box 
+        w="100%" 
+        p={8} 
+        mt={16} 
+        borderRadius="md" 
+        shadow="md" 
+        bg={bgColor} 
+        color={textColor} 
+        data-aos="fade-up"
+      >
         <Heading as="h2" size="lg" mb={4} textAlign="center">
           Connect with me!
         </Heading>

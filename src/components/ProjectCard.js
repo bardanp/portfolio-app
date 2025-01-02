@@ -20,11 +20,30 @@ import {
 
 const ProjectCard = ({ title, description, link, github, techStack, whatILearned, projectInfo, imageUrls }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const cardBg = useColorModeValue('white', 'gray.800');
+  const cardBg = useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(26, 32, 44, 0.8)');
   const textColor = useColorModeValue('gray.800', 'gray.200');
+  const borderColor = useColorModeValue('gray.200', 'whiteAlpha.300');
+  const tagBg = useColorModeValue('blue.50', 'whiteAlpha.200');
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={5} shadow="md" bg={cardBg} color={textColor}>
+    <Box
+      borderWidth="1px"
+      borderRadius="xl"
+      overflow="hidden"
+      p={6}
+      bg={cardBg}
+      color={textColor}
+      borderColor={borderColor}
+      transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+      backdropFilter="blur(10px)"
+      _hover={{
+        transform: 'translateY(-8px) scale(1.02)',
+        boxShadow: '2xl',
+        borderColor: useColorModeValue('blue.200', 'blue.500'),
+      }}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
       <Heading size="md" mb={2}>{title}</Heading>
       <Text mb={4}>{description}</Text>
       <VStack align="start" spacing={2} mb={4}>
