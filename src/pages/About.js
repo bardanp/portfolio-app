@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Button,
   Heading,
   Text,
   VStack,
-  Icon,
-  SimpleGrid,
   useColorModeValue,
-  Divider,
   Container,
   HStack,
-  Link,
+  IconButton,
 } from '@chakra-ui/react';
-import { FaLaptopCode, FaUser, FaBriefcase, FaDownload, FaEye, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDownload, FaEye } from 'react-icons/fa';
 import { Element } from 'react-scroll';
 import ProjectCard from '../components/ProjectCard';
 import Connect from '../pages/Connect';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import LoadingState from '../components/LoadingState';
+import TypedText from '../components/TypedText';
+import SkillsSection from '../components/SkillsSection';
 
 const resumeURL = './Resume.pdf';
 
@@ -99,168 +99,131 @@ const projects = [
 ];
 
 const About = () => {
-  const bgColor = useColorModeValue('gray.50', 'gray.800');
-  const textColor = useColorModeValue('gray.800', 'gray.200');
+  const [isLoading, setIsLoading] = useState(true);
+  const cardBg = useColorModeValue('whiteAlpha.800', 'blackAlpha.500');
+  const textColor = useColorModeValue('gray.800', 'white');
+  const buttonHoverBg = useColorModeValue('whiteAlpha.300', 'whiteAlpha.200');
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
+    setTimeout(() => setIsLoading(false), 1500);
   }, []);
 
+  if (isLoading) return <LoadingState />;
+
   return (
-    <Box bg={bgColor} color={textColor} minHeight="100vh" pt="80px">
-      <Container maxW="7xl" py={10}>
+    <Box position="relative" minHeight="100vh" pt="80px">
+      <div className="site-background background-grid" />
+      <Container maxW="7xl" py={10} position="relative">
         <Element name="about">
-          <Box 
-            textAlign="center" 
-            mb={12} 
-            position="relative"
-            py={20}
-            background="linear-gradient(45deg, #4299E1 0%, #805AD5 100%)"
-            borderRadius="xl"
-            color="white"
-            overflow="hidden"
-          >
-            <Box
-              position="absolute"
-              top={0}
-              left={0}
-              right={0}
-              bottom={0}
-              bg="blackAlpha.400"
-              backdropFilter="blur(2px)"
-            />
-            <Box position="relative" zIndex={2}>
-              <Heading 
-                as="h1" 
-                size="2xl" 
-                mb={4} 
-                data-aos="fade-down"
-                bgGradient="linear(to-r, #ffffff, #E2E8F0)"
-                bgClip="text"
-              >
-                Bardan Phuyel
-              </Heading>
-              <Text 
-                fontSize="xl" 
-                mb={6}
-                data-aos="fade-up"
-              >
-                Computer Science Student & Full-Stack Developer
-              </Text>
-              <HStack justifyContent="center" spacing={6}>
-                <Button
-                  size="lg"
-                  colorScheme="whiteAlpha"
-                  leftIcon={<FaGithub />}
-                  onClick={() => window.open('https://github.com/bardanp', '_blank')}
+          <Box className="hero-container" minHeight="70vh">
+            <Box 
+              className="hero-section glass-card"
+              p={8}
+              borderRadius="2xl"
+              bg={cardBg}
+              backdropFilter="blur(10px)"
+            >
+              <div className="gradient-blur primary" />
+              <div className="gradient-blur secondary" />
+              
+              <VStack spacing={8} maxW="800px" textAlign="center" mx="auto" position="relative" zIndex={2}>
+                <Heading 
+                  as="h1" 
+                  size="2xl"
+                  bgGradient="linear(to-r, blue.400, purple.500)"
+                  bgClip="text"
+                  letterSpacing="tight"
+                  className="glowing-text"
                 >
-                  View GitHub
-                </Button>
-                <Button
-                  size="lg"
-                  colorScheme="whiteAlpha"
-                  variant="outline"
-                  leftIcon={<FaLinkedin />}
-                  onClick={() => window.open('https://linkedin.com/in/bardanp', '_blank')}
+                  Hey, I'm Bardan Phuyel
+                </Heading>
+                
+                <Text 
+                  fontSize="xl"
+                  fontWeight="medium"
+                  color={textColor}
                 >
-                  Connect on LinkedIn
-                </Button>
-              </HStack>
-            </Box>
-          </Box>
+                  I'm <TypedText />
+                </Text>
 
-          <HStack justifyContent="center" spacing={6} mb={10}>
-            <Link href={resumeURL} download="Resume.pdf">
-              <Button
-                leftIcon={<Icon as={FaDownload} />}
-                colorScheme="blue"
-                variant="solid"
-                data-aos="fade-right"
-              >
-                Download Resume
-              </Button>
-            </Link>
-            <Link href={resumeURL} target="_blank" rel="noopener noreferrer">
-              <Button
-                leftIcon={<Icon as={FaEye} />}
-                colorScheme="blue"
-                variant="outline"
-                data-aos="fade-left"
-              >
-                View Resume
-              </Button>
-            </Link>
-          </HStack>
+                <HStack spacing={4} pt={4}>
+                  <Button
+                    as="a"
+                    href={resumeURL}
+                    download="Resume.pdf"
+                    leftIcon={<FaDownload />}
+                    colorScheme="blue"
+                    size="lg"
+                    className="hover-lift"
+                  >
+                    Download Resume
+                  </Button>
+                  <Button
+                    as="a"
+                    href={resumeURL}
+                    target="_blank"
+                    leftIcon={<FaEye />}
+                    variant="outline"
+                    size="lg"
+                    className="hover-lift"
+                    _hover={{ bg: buttonHoverBg }}
+                  >
+                    View Resume
+                  </Button>
+                </HStack>
 
-          <VStack spacing={12} alignItems="start">
-            <Box w="100%" data-aos="fade-right">
-              <Heading as="h2" size="lg" mb={4} display="flex" alignItems="center">
-                <Icon as={FaUser} mr={3} /> About Me
-              </Heading>
-              <Divider mb={6} />
-              <Text>
-                I am a passionate Computer Science student at Penn State University, expected to graduate in Spring 2025.
-                My academic and professional journey has equipped me with expertise in various programming languages,
-                frameworks, and tools. I thrive on building innovative solutions and learning new technologies.
-              </Text>
-            </Box>
-
-            <Box w="100%" data-aos="fade-right">
-              <Heading as="h2" size="lg" mb={4} display="flex" alignItems="center">
-                <Icon as={FaLaptopCode} mr={3} /> Skills
-              </Heading>
-              <Divider mb={6} />
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-                <Text><strong>Languages:</strong> C++, Python, Java, JavaScript, SQL, HTML, CSS</Text>
-                <Text><strong>Frameworks & Tools:</strong> React.js, Firebase, Flask, Node.js, Git, Azure</Text>
-                <Text><strong>Software:</strong> Visual Studio Code, IntelliJ, PyCharm, CLion, GitHub</Text>
-                <Text><strong>Other:</strong> API integration, RESTful services, Responsive Design</Text>
-              </SimpleGrid>
+                <HStack spacing={4}>
+                  <IconButton
+                    as="a"
+                    href="https://github.com/bardanp"
+                    aria-label="GitHub"
+                    icon={<FaGithub />}
+                    size="lg"
+                    variant="ghost"
+                    className="hover-lift"
+                  />
+                  <IconButton
+                    as="a"
+                    href="https://linkedin.com/in/bardanp"
+                    aria-label="LinkedIn"
+                    icon={<FaLinkedin />}
+                    size="lg"
+                    variant="ghost"
+                    className="hover-lift"
+                  />
+                </HStack>
+              </VStack>
             </Box>
 
-            <Box w="100%" data-aos="fade-left">
-              <Heading as="h2" size="lg" mb={4} display="flex" alignItems="center">
-                <Icon as={FaBriefcase} mr={3} /> Experience
-              </Heading>
-              <Divider mb={6} />
-              <Box bg={useColorModeValue('white', 'gray.700')} p={6} borderRadius="lg" shadow="md">
-                <Heading as="h3" size="md" mb={3}>
-                  Software Engineer Intern
-                </Heading>
-                <Text fontSize="sm" color="gray.500">SupplyTiger, Elizabethtown, PA (May 2023 - Jul 2023)</Text>
-                <Box as="ul" mt={4} pl={5}>
-                  <li>Integrated AI and machine learning solutions for efficiency improvement.</li>
-                  <li>Built scalable, full-stack applications with Python, HTML, and JavaScript.</li>
-                  <li>Automated e-commerce operations through RESTful API integrations.</li>
-                  <li>Created innovative product offerings and marketing strategies.</li>
-                </Box>
-              </Box>
+            <SkillsSection />
 
-              <Box bg={useColorModeValue('white', 'gray.700')} p={6} mt={6} borderRadius="lg" shadow="md">
-                <Heading as="h3" size="md" mb={3}>
-                  Retail Sales Consultant
-                </Heading>
-                <Text fontSize="sm" color="gray.500">Xfinity, Hummelstown, PA (Mar 2022 - Apr 2023)</Text>
-                <Box as="ul" mt={4} pl={5}>
-                  <li>Exceeded sales goals by offering tailored solutions for customers.</li>
-                  <li>Communicated complex technical concepts effectively to non-technical clients.</li>
-                  <li>Achieved top performance while balancing academic responsibilities.</li>
-                </Box>
-              </Box>
-            </Box>
-          </VStack>
-        </Element>
-
-        <Element name="projects">
-          <Box mt={16} mb={20} data-aos="fade-up">
-            <Heading as="h2" size="lg" mb={6} textAlign="center">
-              Projects
+            <Heading 
+              textAlign="center" 
+              mb={12}
+              mt={20}
+              bgGradient="linear(to-r, blue.400, purple.500)"
+              bgClip="text"
+              fontSize="4xl"
+            >
+              Featured Projects
             </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+
+            <Box 
+              className="project-grid" 
+              mx="auto"
+              maxW="100%"
+              px={{ base: 4, md: 8 }}
+            >
               {projects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
+                <ProjectCard 
+                  key={index} 
+                  {...project} 
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                />
               ))}
-            </SimpleGrid>
+            </Box>
           </Box>
         </Element>
 

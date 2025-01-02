@@ -13,6 +13,7 @@ const Navbar = () => {
   );
   const textColor = useColorModeValue('gray.800', 'white');
   const buttonHoverBg = useColorModeValue('blue.50', 'blue.900');
+  const purpleHoverBg = useColorModeValue('purple.50', 'purple.900');
   const logo = useColorModeValue('/LogoLight.png', '/LogoDark.png');
 
   const navItems = ['About Me', 'Projects', 'Contact'];
@@ -65,7 +66,7 @@ const Navbar = () => {
             variant="ghost"
             color={textColor}
             _hover={{
-              bg: useColorModeValue('purple.50', 'purple.900'),
+              bg: purpleHoverBg,
               transform: 'rotate(180deg)',
             }}
             transition="all 0.3s"
